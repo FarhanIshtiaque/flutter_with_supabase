@@ -1,9 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_with_supabase/configure_app.dart';
 
 import 'package:flutter_with_supabase/core/routes/app_pages.dart';
 import 'package:flutter_with_supabase/view/screens/auth/login.dart';
+import 'package:flutter_with_supabase/view/screens/auth/sign_up.dart';
+import 'package:flutter_with_supabase/view/screens/home/home.dart';
+import 'package:flutter_with_supabase/view/screens/splash_screen.dart';
 import 'package:get/get.dart';
 
 import 'core/language/translator.dart';
@@ -29,14 +33,29 @@ class MyApp extends StatelessWidget {
       translations: Translator(),
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en','US'),
-      getPages: AppPages.pages,
+      onGenerateRoute:generateRoute,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Login(),
+      initialRoute: '/',
+      routes: <String, WidgetBuilder>{
+        '/login': (_) => Login(),
+        '/signUp': (_) => SignUp(),
+        '/home': (_) => Home(),
+      },
 
     );
+
+
   }
+
 }
 
 
+Route<dynamic> generateRoute(RouteSettings settings) {
+  switch (settings.name) {
+    default:
+      return MaterialPageRoute(
+          builder: (_) => kIsWeb ? SplashScreen() : SplashScreen());
+  }
+}

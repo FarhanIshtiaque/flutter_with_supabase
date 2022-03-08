@@ -2,7 +2,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future configureApp() async {
+Future<void> configureApp() async {
   // init Supabase singleton
   await Supabase.initialize(
     url: dotenv.get('BASE_URL'),

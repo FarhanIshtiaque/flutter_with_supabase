@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_with_supabase/controller/auth_controller.dart';
+import 'package:flutter_with_supabase/core/components/auth_state.dart';
 import 'package:flutter_with_supabase/core/helper/validator.dart';
 import 'package:flutter_with_supabase/core/routes/app_routes.dart';
 import 'package:flutter_with_supabase/core/values/app_assets.dart';
@@ -15,7 +16,7 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends AuthState<Login> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
