@@ -21,7 +21,6 @@ class AuthController extends GetxController{
        } else {
          /// Sign in with success
          isLoading(false);
-         logger.d(response.data);
          Get.toNamed(Routes.HOME);
          Get.snackbar('Successful', response.data!.user!.email.toString());
        }
@@ -42,7 +41,7 @@ class AuthController extends GetxController{
       } else {
         /// Sign in with success
         isLoading(false);
-        Get.toNamed(Routes.HOME);
+        Get.offAllNamed(Routes.HOME);
         Get.snackbar('Login Successful', response.data!.user!.email.toString());
       }
     }

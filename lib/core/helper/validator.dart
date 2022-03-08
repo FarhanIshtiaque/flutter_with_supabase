@@ -16,11 +16,32 @@ class Validator {
 
 
   static String? validatePassword(String value) {
+
     if (value.length < 7) {
       return 'password_must_be_at_least_7_characters_long'.tr;
     } else {
       return null;
     }
   }
+
+ static String? numberValidator(String value) {
+   if(value == null) {
+     return null;
+   }
+   final n = num.tryParse(value);
+   if(n == null) {
+     return '"$value" is not a valid number';
+   }
+   return null;
+ }
+
+ static String? validateExpense(String value) {
+
+   if (value.length < 1) {
+     return 'Expense name can\'t be null';
+   } else {
+     return null;
+   }
+ }
 
 }
