@@ -50,7 +50,7 @@ class AuthController extends GetxController{
       isLoading(false);
     }
   }
-
+  
 
 
 }

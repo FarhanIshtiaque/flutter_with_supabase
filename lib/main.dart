@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_with_supabase/configure_app.dart';
 
 import 'package:flutter_with_supabase/core/routes/app_pages.dart';
 import 'package:flutter_with_supabase/view/screens/auth/login.dart';
 import 'package:get/get.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'core/language/translator.dart';
 
 Future<void> main() async {
 
+
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
-  await Supabase.initialize(
-      url: dotenv.get('BASE_URL'),
-      anonKey:dotenv.get('ANON_KEY'),
-      authCallbackUrlHostname: 'login-callback', // optional
-      debug: true // optional
-  );
+  await configureApp();
+
   runApp(const MyApp());
 }
 
