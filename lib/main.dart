@@ -2,10 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_with_supabase/configure_app.dart';
-
-import 'package:flutter_with_supabase/core/routes/app_pages.dart';
 import 'package:flutter_with_supabase/view/screens/auth/login.dart';
 import 'package:flutter_with_supabase/view/screens/auth/sign_up.dart';
+import 'package:flutter_with_supabase/view/screens/expense_list.dart';
 import 'package:flutter_with_supabase/view/screens/home/home.dart';
 import 'package:flutter_with_supabase/view/screens/splash_screen.dart';
 import 'package:get/get.dart';
@@ -42,6 +41,7 @@ class MyApp extends StatelessWidget {
         '/login': (_) => Login(),
         '/signUp': (_) => SignUp(),
         '/home': (_) => Home(),
+        '/expenseList': (_) => ExpenseList(),
       },
 
     );

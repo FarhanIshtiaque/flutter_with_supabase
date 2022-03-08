@@ -51,7 +51,16 @@ class _HomeState extends AuthRequiredState<Home> {
                   homeController.addExpense(expanseName: expenseController.text, amount: amountController.text.trim());
 
                 }
-              }, buttonName: Text('Add Expense'))
+              }, buttonName: Text('Add Expense')),
+
+              const SizedBox(
+                height: 20,
+              ),
+              ButtonCustom(onPressed: () {
+
+                Navigator.pushNamed(context, '/expenseList',);
+              }, buttonName: Text('Expense List'))
+
             ],
           ),
         )
