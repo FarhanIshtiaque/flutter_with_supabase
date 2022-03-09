@@ -14,7 +14,7 @@ class TextFieldCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     return     TextFormField(
       style: const TextStyle(fontSize: 17),
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      // autovalidateMode: AutovalidateMode.,
       obscureText: obscureText,
       controller: controller,
       validator:validator,

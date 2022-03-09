@@ -18,10 +18,24 @@ class _HomeState extends AuthRequiredState<Home> {
   final expenseController = TextEditingController();
   final amountController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  final homeController = Get.put(HomeController());
+  final expenseState = Get.put(ExpenseController());
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    expenseController.dispose();
+    amountController.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     final homeController = Get.put(HomeController());
     final expensecontroller = Get.put(ExpenseController());
+
 
     return Scaffold(
       body: Padding(
@@ -53,13 +67,25 @@ class _HomeState extends AuthRequiredState<Home> {
                   homeController.addExpense(expanseName: expenseController.text, amount: amountController.text.trim());
 
                 }
+                expenseController.clear();
+                amountController.clear();
+                FocusScopeNode currentFocus = FocusScope.of(context);
+
+                if (!currentFocus.hasPrimaryFocus) {
+                  currentFocus.unfocus();
+                }
               }, buttonName: Text('Add Expense')),
 
               const SizedBox(
                 height: 20,
               ),
               ButtonCustom(onPressed: () {
+
                 expensecontroller.fetchExpense();
+
+                expenseState.fetchExpense();
+
+
 
                 Navigator.pushNamed(context, '/expenseList',);
               }, buttonName: Text('Expense List'))
