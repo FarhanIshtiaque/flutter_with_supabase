@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_with_supabase/controller/expense_controller.dart';
 import 'package:flutter_with_supabase/controller/home_controller.dart';
 import 'package:flutter_with_supabase/core/components/auth_required_state.dart';
 import 'package:flutter_with_supabase/core/helper/validator.dart';
@@ -17,9 +18,12 @@ class _HomeState extends AuthRequiredState<Home> {
   final expenseController = TextEditingController();
   final amountController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  final homeController = Get.put(HomeController());
+  final expenseState = Get.put(ExpenseController());
   @override
   Widget build(BuildContext context) {
-    final homeController = Get.put(HomeController());
+
 
     return Scaffold(
       body: Padding(
@@ -51,12 +55,21 @@ class _HomeState extends AuthRequiredState<Home> {
                   homeController.addExpense(expanseName: expenseController.text, amount: amountController.text.trim());
 
                 }
+                expenseController.clear();
+                amountController.clear();
+                FocusScopeNode currentFocus = FocusScope.of(context);
+
+                if (!currentFocus.hasPrimaryFocus) {
+                  currentFocus.unfocus();
+                }
               }, buttonName: Text('Add Expense')),
 
               const SizedBox(
                 height: 20,
               ),
               ButtonCustom(onPressed: () {
+                expenseState.fetchExpense();
+
 
                 Navigator.pushNamed(context, '/expenseList',);
               }, buttonName: Text('Expense List'))
