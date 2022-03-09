@@ -6,12 +6,10 @@ class ExpenseController extends GetxController{
   // List expenseList = [].obs;
   final expenseList = <dynamic>[].obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    fetchExpense();
-    update();
-  }
+
+
+
+
 
   Future<dynamic> fetchExpense() async {
     try{
@@ -26,6 +24,7 @@ class ExpenseController extends GetxController{
         /// Sign in with success
         isLoading(false);
         expenseList.value = response.data;
+        update();
 
 
 

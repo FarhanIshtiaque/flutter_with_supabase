@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_with_supabase/controller/expense_controller.dart';
 import 'package:flutter_with_supabase/controller/home_controller.dart';
 import 'package:flutter_with_supabase/core/components/auth_required_state.dart';
 import 'package:flutter_with_supabase/core/helper/validator.dart';
@@ -20,6 +21,7 @@ class _HomeState extends AuthRequiredState<Home> {
   @override
   Widget build(BuildContext context) {
     final homeController = Get.put(HomeController());
+    final expensecontroller = Get.put(ExpenseController());
 
     return Scaffold(
       body: Padding(
@@ -57,6 +59,7 @@ class _HomeState extends AuthRequiredState<Home> {
                 height: 20,
               ),
               ButtonCustom(onPressed: () {
+                expensecontroller.fetchExpense();
 
                 Navigator.pushNamed(context, '/expenseList',);
               }, buttonName: Text('Expense List'))

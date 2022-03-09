@@ -11,9 +11,10 @@ class ExpenseList extends StatefulWidget {
 }
 
 class _ExpenseListState extends AuthRequiredState<ExpenseList> {
+  final ExpenseController expenseController = Get.find();
   @override
   Widget build(BuildContext context) {
-    final expenseController = Get.put(ExpenseController());
+
     return Scaffold(
        body:Obx(
            ()=> ListView.builder(
