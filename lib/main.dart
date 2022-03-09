@@ -5,6 +5,7 @@ import 'package:flutter_with_supabase/configure_app.dart';
 import 'package:flutter_with_supabase/view/screens/auth/login.dart';
 import 'package:flutter_with_supabase/view/screens/auth/sign_up.dart';
 import 'package:flutter_with_supabase/view/screens/expense_list.dart';
+import 'package:flutter_with_supabase/view/screens/expense_update.dart';
 import 'package:flutter_with_supabase/view/screens/home/home.dart';
 import 'package:flutter_with_supabase/view/screens/splash_screen.dart';
 import 'package:get/get.dart';
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         '/signUp': (_) => SignUp(),
         '/home': (_) => Home(),
         '/expenseList': (_) => ExpenseList(),
+        '/expenseUpdate': (_) => ExpenseUpdate(),
       },
 
     );

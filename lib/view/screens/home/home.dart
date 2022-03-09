@@ -21,6 +21,16 @@ class _HomeState extends AuthRequiredState<Home> {
 
   final homeController = Get.put(HomeController());
   final expenseState = Get.put(ExpenseController());
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    expenseController.dispose();
+    amountController.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
 
